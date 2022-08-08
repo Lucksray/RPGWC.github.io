@@ -15,6 +15,7 @@ public class RpgwcApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RpgwcApplication.class, args);
+		
 	}
 
 }
