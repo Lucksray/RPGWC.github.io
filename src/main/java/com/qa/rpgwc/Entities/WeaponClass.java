@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeaponStats {
+public class WeaponClass {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,8 @@ public class WeaponStats {
 	private String name;
 	
 	@Column(nullable = false)
-	private String material;
-
+	private String type;
+	
+	@Column(nullable = false, columnDefinition = "varchar(75) default 'No sub-type")
+	private String subType;
 }

@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeaponStats {
+public class WeaponOrigin {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,9 @@ public class WeaponStats {
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable = false)
-	private String material;
-
+	@Column(nullable = false, columnDefinition = "varchar(150) default 'Unknown'")
+	private String creator;
+	
+	@Column(nullable = false, columnDefinition = "varchar(255) default 'No background'")
+	private String origin;
 }
