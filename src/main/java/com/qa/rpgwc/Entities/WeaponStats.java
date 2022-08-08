@@ -25,5 +25,8 @@ public class WeaponStats {
 	
 	@Column(nullable = false)
 	private String material;
+	
+	@Column(nullable = false)
+	private int materialAmount;
 
 }
