@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeaponStatsDTO {
+public class WeaponStatDTO {
 	
 	private String name;
 	private String material;
