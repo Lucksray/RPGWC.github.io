@@ -1,5 +1,36 @@
 package com.qa.rpgwc.controllers;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.qa.rpgwc.Entities.TotalEntity;
+import com.qa.rpgwc.Entities.WeaponStat;
+import com.qa.rpgwc.dtos.WeaponStatDTO;
+import com.qa.rpgwc.services.WeaponStatService;
+
+@Service
+@RestController
 public class WeaponStatController {
 
+	private WeaponStatService service;
+	
+	public WeaponStatController(WeaponStatService service) {
+		super();
+		this.service = service;
+	}
+	
+	public List<WeaponStatDTO> getAll(){
+		return service.getAllWeaponStats();
+	}
+	
+	public void create(TotalEntity fullWeapon) {
+		WeaponStat weapon = new WeaponStat();
+		weapon.setName(fullWeapon.getName());
+		weapon.setMaterial(fullWeapon.getMaterial());
+		weapon.setMaterialAmount(fullWeapon.getMaterialAmount());
+		
+		service.addWeaponStat(weapon);
+	}
 }

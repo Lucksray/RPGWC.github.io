@@ -1,4 +1,4 @@
-package com.qa.rpgwc.controllers;
+package com.qa.rpgwc.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 
 import com.qa.rpgwc.Entities.WeaponClass;
-import com.qa.rpgwc.Entities.WeaponClassDTO;
+import com.qa.rpgwc.dtos.WeaponClassDTO;
 import com.qa.rpgwc.exceptions.WeaponClassNotFound;
 import com.qa.rpgwc.repo.WeaponClassRepo;
 

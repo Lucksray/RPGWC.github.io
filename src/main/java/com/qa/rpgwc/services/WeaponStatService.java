@@ -1,4 +1,4 @@
-package com.qa.rpgwc.controllers;
+package com.qa.rpgwc.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.qa.rpgwc.Entities.WeaponStat;
-import com.qa.rpgwc.Entities.WeaponStatDTO;
+import com.qa.rpgwc.dtos.WeaponStatDTO;
 import com.qa.rpgwc.exceptions.WeaponStatNotFound;
 import com.qa.rpgwc.repo.WeaponStatRepo;
 
