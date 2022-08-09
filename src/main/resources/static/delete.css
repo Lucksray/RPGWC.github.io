@@ -1,0 +1,20 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    background-color: aqua;
+}
+
+.title--element {
+    margin: 0px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#nav--list {
+    display: inline-flex;
+    width: 80%;
+    justify-content: space-evenly;
+    list-style: none;
+    margin-bottom: 50px;
+}
