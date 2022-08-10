@@ -37,7 +37,7 @@ public class WeaponClassService {
 	
 	//Fix Update, doesn't recognise null ExistingOptional
 	public WeaponClassDTO updateAccount(Long id, WeaponClass weapon) {
-		Optional<WeaponClass> existingOptional = this.repo.findById(id);
+		Optional<WeaponClass> existingOptional = this.repo.findRelateId(id);
 		WeaponClass existing = existingOptional.orElse(new WeaponClass());
 		
 		existing.setName(weapon.getName());
@@ -69,5 +69,9 @@ public class WeaponClassService {
 	public WeaponClassDTO getLatest() {
 		WeaponClass saved =  this.repo.getLatest();
 		return this.mapToDTO(saved);
+	}
+	
+	public void delete(Long id, String name) {
+		this.repo.deleteRelate(id, name);
 	}
 }

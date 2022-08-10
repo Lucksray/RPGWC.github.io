@@ -32,14 +32,14 @@ public class WeaponOriginService {
 		WeaponOrigin saved = this.repo.save(weapon);
 		return this.mapToDTO(saved);
 	}
-	
+	 
 	public List<WeaponOriginDTO> getAllOrigins(){
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
 	
 	//Fix Update, doesn't recognise null ExistingOptional
-	public WeaponOriginDTO updateOrigin(Long id, WeaponOrigin weapon) {
-		Optional<WeaponOrigin> existingOptional = this.repo.findById(id);
+	public WeaponOriginDTO updateOrigin(Long statId, WeaponOrigin weapon) {
+		Optional<WeaponOrigin> existingOptional = this.repo.findRelateId(statId);
 		WeaponOrigin existing = existingOptional.orElse(new WeaponOrigin());
 		
 		existing.setName(weapon.getName());
@@ -68,8 +68,27 @@ public class WeaponOriginService {
 		return this.repo.findByName(name).stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
 	
+	public WeaponOrigin getSingle(String name) {
+		List<WeaponOrigin> weapons = this.repo.findByName(name);
+		if(weapons.size() < 2 ) {
+			WeaponOrigin weapon = weapons.get(0);
+			return weapon;
+		} else if (weapons.size() > 1) {
+			System.out.println("Too many arguments");
+		}
+		return null;
+	}
+	
+	public List<WeaponOrigin> readByName(String name){
+		return this.repo.findByName(name);
+	}
+	
 	public WeaponOriginDTO getLatest() {
 		WeaponOrigin saved =  this.repo.getLatest();
 		return this.mapToDTO(saved);
+	}
+	
+	public void delete(Long id, String name) {
+		this.repo.deleteRelate(id,name);
 	}
 }

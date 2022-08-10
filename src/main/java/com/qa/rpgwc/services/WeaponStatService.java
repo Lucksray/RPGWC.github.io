@@ -71,4 +71,8 @@ public class WeaponStatService {
 		WeaponStat saved = this.repo.getLatest();
 		return this.mapToDTO(saved);
 	}
+	
+	public void delete(Long id, String name) {
+		this.repo.deleteRelate(id, name);
+	}
 }

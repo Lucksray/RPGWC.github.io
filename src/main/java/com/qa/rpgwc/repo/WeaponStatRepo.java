@@ -16,4 +16,7 @@ public interface WeaponStatRepo extends JpaRepository<WeaponStat, Long>{
 	
 	@Query(value = "SELECT * FROM weapon_stat ORDER BY id DESC LIMIT 1", nativeQuery = true)
 	WeaponStat getLatest();
+	
+	@Query(value = "DELETE FROM weapon_stat WHERE id=?1 AND name=?2", nativeQuery = true)
+	void deleteRelate(Long id, String name);
 }

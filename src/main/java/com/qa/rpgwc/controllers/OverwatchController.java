@@ -7,10 +7,11 @@ import javax.websocket.server.PathParam;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.rpgwc.Entities.TotalEntity;
-import com.qa.rpgwc.Entities.WeaponStat;
+import com.qa.rpgwc.Entities.WeaponOrigin;
 import com.qa.rpgwc.dtos.DTO;
 
 @Service
@@ -44,9 +45,9 @@ public class OverwatchController {
 		}
 	}
 	
-	public List<WeaponStat> readByName(String name){
+	public List<WeaponOrigin> readByName(String name){
 		return originController.readByName(name);
-	}
+	} 
 	
 	@PostMapping("/create.html")
 	public TotalEntity create(@PathParam("name") String name,@PathParam("material") String material,@PathParam("materialAmount") int materialAmount,@PathParam("creator") String creator,@PathParam("origin") String origin,@PathParam("classType") String classType,@PathParam("subClassType") String subClassType) {
@@ -64,8 +65,39 @@ public class OverwatchController {
 	}
 	
 	@PostMapping("/delete.html")
-	public boolean delete(@PathParam("id") Long id,@PathParam("name") String name) {
-		
+	public String delete(@PathParam("id") Long id,@PathParam("name") String name) {
+		if(originController.testSingle(name) && id == null) {
+			id = originController.getSingleId(name);
+			originController.delete(id,name);
+			classController.delete(id,name);
+			statController.delete(id,name);
+			return "Your weapon has been deleted";
+		} else if (originController.testSingle(name) && id != null) {
+			originController.delete(id,  name);
+			classController.delete(id,  name);
+			statController.delete(id,  name);
+			return "Your weapon has been deleted";
+		} else {
+			return "We couldn't find your weapon...";
+		}
+	}
+	
+	@PostMapping("/update.html")
+	public TotalEntity update(@PathParam("id") Long id,@PathParam("name") String name,@RequestBody TotalEntity fullWeapon) {
+		if(originController.testSingle(name) && id == null) {
+			id = originController.getSingleId(name);
+			originController.update(id,fullWeapon);
+			classController.update(id,fullWeapon);
+			statController.update(id,fullWeapon);
+			return fullWeapon;
+		} else if (originController.testSingle(name) && id != null ) {
+			originController.update(id,fullWeapon);
+			classController.update(id,fullWeapon);
+			statController.update(id,fullWeapon);
+			return fullWeapon;
+		} else {
+			return null;
+		}
 	}
 	
 	

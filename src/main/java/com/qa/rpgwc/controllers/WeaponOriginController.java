@@ -33,4 +33,37 @@ public class WeaponOriginController {
 		
 		service.addOrigin(weapon);
 	}
+	
+	public List<WeaponOrigin> readByName(String name){
+		return service.readByName(name);
+	}
+	
+	public boolean testSingle(String name) {
+		try { 
+			WeaponOrigin weapon = this.service.getSingle(name);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public Long getSingleId(String name) {
+		WeaponOrigin weapon = this.service.getSingle(name);
+		return weapon.getId();
+	}
+	
+	public void delete(Long id,String name) {
+		this.service.delete(id,name);
+	}
+	
+	public WeaponOriginDTO update(Long id, TotalEntity fullWeapon) {
+		WeaponOrigin weapon = new WeaponOrigin();
+		weapon.setCreator(fullWeapon.getCreator());
+		weapon.setName(fullWeapon.getName());
+		weapon.setOrigin(fullWeapon.getOrigin());
+		
+		WeaponOriginDTO newWeapon = service.updateOrigin(id, weapon);
+		return newWeapon;
+	}
 }
