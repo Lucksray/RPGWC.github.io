@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeaponStatDTO implements DTO {
+public class WeaponStatDTO{
 	
 	private String name;
 	private String material;
+	private int materialAmount;
 }

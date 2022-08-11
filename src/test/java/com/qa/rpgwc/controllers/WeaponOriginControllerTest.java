@@ -13,12 +13,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.rpgwc.Entities.WeaponStat;
-import com.qa.rpgwc.dtos.WeaponStatDTO;
+import com.qa.rpgwc.Entities.WeaponOrigin;
+import com.qa.rpgwc.dtos.WeaponOriginDTO;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class WeaponStatControllerTest {
+public class WeaponOriginControllerTest {
 	
 	@Autowired
 	private MockMvc mock;
@@ -29,17 +29,17 @@ public class WeaponStatControllerTest {
 	@Autowired
 	private ObjectMapper jsonifier;
 	
-	private WeaponStatDTO mapToDTO(WeaponStat weapon) {
-		return mapper.map(weapon,  WeaponStatDTO.class);
+	private WeaponOriginDTO mapToDTO(WeaponOrigin weapon) {
+		return mapper.map(weapon,  WeaponOriginDTO.class);
 	}
 	
 	private final Long TEST_ID = 4L;
-	private final WeaponStat TEST_ACCOUNT = new WeaponStat(null,"Bealdug","mithril",7);
+	private final WeaponOrigin TEST_ACCOUNT = new WeaponOrigin(null,"Bealdug","Barrin","Unknown");
 	
 	@Test
 	public void create() {
 		
-		WeaponStat expected = TEST_ACCOUNT;
+		WeaponOrigin expected = TEST_ACCOUNT;
 		expected.setId(TEST_ID);
 		
 		try {
