@@ -24,8 +24,8 @@ public class WeaponClass {
 	private String name;
 	
 	@Column(nullable = false)
-	private String type;
+	private String classType;
 	
-	@Column(nullable = false, columnDefinition = "varchar(75) default 'No sub-type")
-	private String subType;
+	@Column(nullable = false)
+	private String subClassType;
 }

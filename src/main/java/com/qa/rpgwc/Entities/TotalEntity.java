@@ -7,9 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeaponOriginDTO {
+public class TotalEntity {
 	
 	private String name;
+	private String material;
+	private int materialAmount;
 	private String creator;
 	private String origin;
+	private String classType;
+	private String subClassType;
+		
 }

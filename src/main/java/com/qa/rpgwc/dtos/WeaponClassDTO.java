@@ -1,13 +1,15 @@
-package com.qa.rpgwc.Entities;
+package com.qa.rpgwc.dtos;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeaponClassDTO {
+public class WeaponClassDTO implements DTO {
 
 	private String name;
 	private String type;

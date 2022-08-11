@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @ComponentScan(value = "com.qa.rpgwc.Beans")
 @ComponentScan(value = "com.qa.rpgwc.controllers")
+@ComponentScan(value = "com.qa.rpgwc.services")
 @EntityScan(value = "com.qa.rpgwc.Entities")
 @EnableJpaRepositories("com.qa.rpgwc.repo")
 public class RpgwcApplication {
