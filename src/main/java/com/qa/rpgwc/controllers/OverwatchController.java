@@ -29,33 +29,17 @@ public class OverwatchController {
 		this.statController = statController;
 	}
 	
-	@GetMapping("/home.html")
-	public String greeting() {
-		return "<p>Welcome to the home page</p>";
-	}
-	
-	@PostMapping("/read.html")
-	public List<DTO> readAll(@PathParam("controller") String controller) {
-		if(controller == "Type") {
-			return classController.getAll();
-		} else if (controller == "Origin") {
-			return originController.getAll();
-		} else if (controller == "Stat") {
-			return statController.getAll();
-		}
-	}
-	
 	public List<WeaponOrigin> readByName(String name){
 		return originController.readByName(name);
 	} 
 	
-	@PostMapping("/create.html")
-	public TotalEntity create(@PathParam("name") String name,@PathParam("material") String material,@PathParam("materialAmount") int materialAmount,@PathParam("creator") String creator,@PathParam("origin") String origin,@PathParam("classType") String classType,@PathParam("subClassType") String subClassType) {
+	@PostMapping("/create")
+	public TotalEntity create(@RequestBody TotalEntity request) {
 		TotalEntity fullWeapon = new TotalEntity();
-		fullWeapon.setName(name); fullWeapon.setMaterial(material);
-		fullWeapon.setMaterialAmount(materialAmount); fullWeapon.setCreator(creator);
-		fullWeapon.setOrigin(origin); fullWeapon.setClassType(subClassType);
-		fullWeapon.setSubClassType(subClassType);
+		fullWeapon.setName(request.getName()); fullWeapon.setMaterial(request.getMaterial());
+		fullWeapon.setMaterialAmount(request.getMaterialAmount()); fullWeapon.setCreator(request.getCreator());
+		fullWeapon.setOrigin(request.getOrigin()); fullWeapon.setClassType(request.getClassType());
+		fullWeapon.setSubClassType(request.getSubClassType());
 		
 		statController.create(fullWeapon);
 		classController.create(fullWeapon);
