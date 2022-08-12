@@ -11,34 +11,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.qa.rpgwc.RpgwcApplication;
-import com.qa.rpgwc.Entities.WeaponStat;
+import com.qa.rpgwc.Entities.WeaponClass;
+import com.qa.rpgwc.Entities.WeaponOrigin;
 
 @SpringBootTest(classes = {RpgwcApplication.class})
-public class WeaponStatsRepoTest {
-	
+public class WeaponClassRepoTest {
+
 	@Autowired
-	private WeaponStatRepo repo;
+	private WeaponClassRepo repo;
 	
 	@BeforeEach
 	public void dWipe(){}
 	
 	@Test
-	public void read() {
-		WeaponStat expected = new WeaponStat(1L,"Baeldug","Iron",5);
+	public void read_Test() {
+		Optional<WeaponClass> expected = Optional.ofNullable(new WeaponClass(1L,"Baeldug","Sword","Broadsword"));
 		
-		Assertions.assertEquals(this.repo.findById(1L), expected);
+		Assertions.assertEquals(expected, this.repo.findById(1L));
 	}
 	
 	@Test
 	public void save_Test() {
-		WeaponStat weapon = new WeaponStat(1L,"Baeldug","Iron",5);
+		WeaponClass weapon = new WeaponClass(1L,"Baeldug","Sword","Broadsword");
 		
 		Assertions.assertEquals(weapon, this.repo.save(weapon));
 	}
 	
 	@Test
 	public void findByName_Test() {
-		Optional<WeaponStat> expected = Optional.of(new WeaponStat(1L,"Baeldug","Iron",5));
+		Optional<WeaponClass> expected = Optional.of(new WeaponClass(1L,"Baeldug","Sword","Braodsword"));
 		String name = "Baeldug";
 		
 		Assertions.assertEquals(expected, this.repo.findByName(name));
@@ -46,7 +47,7 @@ public class WeaponStatsRepoTest {
 	
 	@Test
 	public void getLatest_Test() {
-		Optional<WeaponStat> expected = Optional.ofNullable(new WeaponStat(2L,"Mjolnir","Mithril",10));
+		Optional<WeaponClass> expected = Optional.ofNullable(new WeaponClass(2L,"Mjolnir","Hammer","Unknown"));
 		
 		Assertions.assertEquals(expected, this.repo.getLatest());
 	}
@@ -58,4 +59,13 @@ public class WeaponStatsRepoTest {
 		
 		assertThat(this.repo.count()).isEqualTo(1);
 	}
+	
+	@Test
+	public void findRelateId_Test() {
+		Optional<WeaponClass> expected = Optional.ofNullable(new WeaponClass(2L,"Mjolnir","Hammer","Unknown"));
+		Long id = 2L;
+		
+		Assertions.assertEquals(expected, this.repo.findRelateId(id));
+	}
+
 }

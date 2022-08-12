@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.rpgwc.Entities.TotalEntity;
 import com.qa.rpgwc.Entities.WeaponClass;
-import com.qa.rpgwc.Entities.WeaponOrigin;
 import com.qa.rpgwc.dtos.WeaponClassDTO;
-import com.qa.rpgwc.dtos.WeaponOriginDTO;
 import com.qa.rpgwc.services.WeaponClassService;
 
 @Service
@@ -46,7 +44,7 @@ public class WeaponClassController {
 		WeaponClass weapon = new WeaponClass();
 		weapon.setName(fullWeapon.getName());
 		
-		WeaponClassDTO newWeapon = service.updateAccount(id, weapon);
+		WeaponClassDTO newWeapon = service.updateClass(id, weapon);
 		return newWeapon;
 	}
 }

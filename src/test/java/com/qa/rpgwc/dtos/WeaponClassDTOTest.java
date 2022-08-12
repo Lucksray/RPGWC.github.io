@@ -1,4 +1,4 @@
-package com.qa.rpgwc.entities;
+package com.qa.rpgwc.dtos;
 
 public class WeaponClassDTOTest {
 

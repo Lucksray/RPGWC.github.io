@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeaponClassDTO implements DTO {
+public class WeaponClassDTO{
 
 	private String name;
 	private String type;

@@ -7,38 +7,39 @@ import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.qa.rpgwc.RpgwcApplication;
-import com.qa.rpgwc.Entities.WeaponStat;
+import com.qa.rpgwc.Entities.WeaponOrigin;
 
 @SpringBootTest(classes = {RpgwcApplication.class})
-public class WeaponStatsRepoTest {
-	
+public class WeaponOriginRepoTest {
+
 	@Autowired
-	private WeaponStatRepo repo;
+	private WeaponOriginRepo repo;
 	
 	@BeforeEach
 	public void dWipe(){}
 	
 	@Test
-	public void read() {
-		WeaponStat expected = new WeaponStat(1L,"Baeldug","Iron",5);
+	public void read_Test() {
+		Optional<WeaponOrigin> expected = Optional.ofNullable(new WeaponOrigin(1L,"Baeldug","Jeremy","Unknown"));
 		
-		Assertions.assertEquals(this.repo.findById(1L), expected);
+		Assertions.assertEquals(expected, this.repo.findById(1L));
 	}
 	
 	@Test
 	public void save_Test() {
-		WeaponStat weapon = new WeaponStat(1L,"Baeldug","Iron",5);
+		WeaponOrigin weapon = new WeaponOrigin(1L,"Baeldug","Jeremy","Unknown");
 		
 		Assertions.assertEquals(weapon, this.repo.save(weapon));
 	}
 	
 	@Test
 	public void findByName_Test() {
-		Optional<WeaponStat> expected = Optional.of(new WeaponStat(1L,"Baeldug","Iron",5));
+		Optional<WeaponOrigin> expected = Optional.of(new WeaponOrigin(1L,"Baeldug","Jeremy","Unknown"));
 		String name = "Baeldug";
 		
 		Assertions.assertEquals(expected, this.repo.findByName(name));
@@ -46,7 +47,7 @@ public class WeaponStatsRepoTest {
 	
 	@Test
 	public void getLatest_Test() {
-		Optional<WeaponStat> expected = Optional.ofNullable(new WeaponStat(2L,"Mjolnir","Mithril",10));
+		Optional<WeaponOrigin> expected = Optional.ofNullable(new WeaponOrigin(2L,"Mjolnir","Tartigre","Forged in a dying star"));
 		
 		Assertions.assertEquals(expected, this.repo.getLatest());
 	}
@@ -57,5 +58,13 @@ public class WeaponStatsRepoTest {
 		repo.deleteRelate(id, name);
 		
 		assertThat(this.repo.count()).isEqualTo(1);
+	}
+	
+	@Test
+	public void findRelateId_Test() {
+		Optional<WeaponOrigin> expected = Optional.ofNullable(new WeaponOrigin(2L,"Mjolnir","Tartigre","Forged in a dying star"));
+		Long id = 2L;
+		
+		Assertions.assertEquals(expected, this.repo.findRelateId(id));
 	}
 }
