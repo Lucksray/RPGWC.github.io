@@ -19,5 +19,25 @@
             </ul>
         </nav>
     </div>
+
+    <div class="main--element">
+        <form id="weapon--form" name="weaponForm">
+            <label for="name">Weapon name</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="material">What material is the weapon made from?</label><br>
+            <input type="text" id="material" name="material"><br>
+            <label for="materialAmount">How much of the material is needed?</label><br>
+            <input type="number" id="materialAmount" name="materialAmount"><br>
+            <label for="creator">What is your name?</label><br>
+            <input type="text" id="creator" name="creator"><br>
+            <label for="origin">What's the simple backstory?</label><br>
+            <input type="text" id="origin" name="origin" value="Unknown"><br>
+            <label for="classType">What type is your weapon? (Sword, Mace, Bow)</label><br>
+            <input type="text" id="classType" name="classType"><br>
+            <label for="subClassType">What specific type is your weapon? (Broadsword, Spiked Mace, Hunting Bow)</label><br>
+            <input type="text" id="subClassType" name="subClassType" value="N/A"><br>
+            <input type="submit" value="Submit" onclick="submitWeapon()">
+        </form>
+        </div>
 </body>
 </html>

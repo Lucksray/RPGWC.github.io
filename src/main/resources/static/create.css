@@ -17,4 +17,9 @@
     justify-content: space-evenly;
     list-style: none;
     margin-bottom: 50px;
+} 
+
+.main--element {
+    display: flex;
+    justify-content: center;
 }
