@@ -50,4 +50,9 @@ public class WeaponStatController {
 		WeaponStatDTO newWeapon = service.updateWeaponStat(id, weapon);
 		return newWeapon;
 	}
+	
+	public WeaponStatDTO getLatest() {
+		WeaponStatDTO weapon = this.service.getLatest();
+		return weapon;
+	}
 }

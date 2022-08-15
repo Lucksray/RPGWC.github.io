@@ -2,7 +2,7 @@ function submitWeapon(item){
     alert("Submitted");
     preventDefault();
     fetch(`/update`,{
-        method:"POST",
+        method:"PATCH",
         body:JSON.stringify(item),
         headers:{
             "Content-Type":"application/json"
