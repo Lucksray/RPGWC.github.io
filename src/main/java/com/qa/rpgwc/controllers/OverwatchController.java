@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.rpgwc.Entities.TotalEntity;
 import com.qa.rpgwc.Entities.WeaponOrigin;
+import com.qa.rpgwc.dtos.WeaponClassDTO;
+import com.qa.rpgwc.dtos.WeaponOriginDTO;
+import com.qa.rpgwc.dtos.WeaponStatDTO;
 
 @Service
 @RestController
@@ -80,6 +83,21 @@ public class OverwatchController {
 		} else {
 			return null;
 		}
+	}
+	
+	@PostMapping("/latest")
+	public TotalEntity getLatest() {
+		WeaponOriginDTO origin = originController.getLatest();
+		WeaponClassDTO clas = classController.getLatest();
+		WeaponStatDTO stat = statController.getLatest();
+		
+		TotalEntity weapon = new TotalEntity();
+		weapon.setName(stat.getName()); weapon.setMaterial(stat.getMaterial());
+		weapon.setMaterialAmount(stat.getMaterialAmount()); weapon.setCreator(origin.getCreator());
+		weapon.setOrigin(origin.getOrigin()); weapon.setClassType(clas.getType());
+		weapon.setSubClassType(clas.getSubType());
+		
+		return weapon;
 	}
 	
 	

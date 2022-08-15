@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="create.css">
-    <script src="create.js"></script>
+    <script src="create.js" defer></script>
     <title>Upload Weapon</title>
 </head>
 <body>
@@ -36,11 +36,12 @@
         <label for="classType">What type is your weapon? (Sword, Mace, Bow)</label><br>
         <input type="text" id="classType" name="classType"><br>
         <label for="subClassType">What specific type is your weapon? (Broadsword, Spiked Mace, Hunting Bow)</label><br>
-        <input type="text" id="subClassType" name="subClassType" value="N/A"><br>
-        <input type="submit" value="Submit" onclick="submitWeapon()">
+        <input type="text" id="subClassType" name="subClassType" value="Unknown"><br>
+        <input type="submit" value="Submit" onclick="submitWeapon">
     </form>
     </div>
 
+    <p></p>
     
 </body>
 </html>

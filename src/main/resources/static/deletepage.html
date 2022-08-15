@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="delete.css">
+    <script src="delete.js" defer></script>
     <title>Delete a creation</title>
 </head>
 <body>
+    <script src="delete.js"></script>
     <div class="title--element">
         <h1><strong>Weapon Deletion</strong></h1>
         <nav>
@@ -18,6 +20,17 @@
                 <li><a href="update.html">View your creations</a></li>
             </ul>
         </nav>
+    </div>
+
+    <div class="main--element">
+        <form id="delete--form" name="weapon--sub">
+            <p><strong>*</strong> means its necessary</p>
+            <label for="id">ID in table</label><br>
+            <input type="text" id="id" name="id"><br>
+            <label for="name">Name of weapon *</label><br>
+            <input type="text" id="name" name="name"><br>
+            <input type="submit" value="Submit" onclick="deleteWeapon">
+        </form>
     </div>
 </body>
 </html>

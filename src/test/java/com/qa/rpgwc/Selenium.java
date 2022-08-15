@@ -4,10 +4,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
+@SpringBootTest(classes = RpgwcApplication.class)
+@ActiveProfiles("dev")
+//@RunWith(RpgwcApplication.class)
 public class Selenium {
 
 	private static ChromeDriver driver;
@@ -40,6 +44,7 @@ public class Selenium {
 	public void update() throws InterruptedException{
 		driver.get("http://localhost:8080/update.html");
 		Assertions.assertEquals(driver.getTitle(), "Update your existing weapons");
+		Thread.sleep(5000);
 	}
 	
 	@Test
@@ -49,7 +54,7 @@ public class Selenium {
 	}
 	
 	@AfterAll
-	public static void tearDown() {
+	public static void tearDown() throws InterruptedException {
 		driver.quit();
 	}
 }
