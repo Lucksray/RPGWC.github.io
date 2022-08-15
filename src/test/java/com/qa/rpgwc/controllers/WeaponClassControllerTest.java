@@ -1,5 +1,6 @@
 package com.qa.rpgwc.controllers;
 
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -51,4 +52,14 @@ public class WeaponClassControllerTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void delete_Test() {
+		String name = TEST_ACCOUNT.getName();
+		
+		try {
+			doNothing();
+		}
+	}
+	
 }

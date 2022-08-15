@@ -49,7 +49,7 @@ public class Selenium {
 	
 	@Test
 	public void delete() throws InterruptedException {
-		driver.get("http://localhost:8080/delete.html");
+		driver.get("http://localhost:8080/deletepage.html");
 		Assertions.assertEquals(driver.getTitle(), "Delete a creation");
 	}
 	
